@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 const api = axios.create({
-  // Use VITE_API_BASE_URL if it exists (for production), otherwise use '/api' (for local dev)
+  // Priority: 1. Render Env Var, 2. Local Proxy (/api)
   baseURL: import.meta.env.VITE_API_BASE_URL || '/api',
   headers: { 'Content-Type': 'application/json' },
 })
