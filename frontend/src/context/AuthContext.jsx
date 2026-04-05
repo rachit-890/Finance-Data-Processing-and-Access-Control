@@ -22,9 +22,20 @@ export function AuthProvider({ children }) {
   }, [])
 
   const login = (authResponse) => {
-    localStorage.setItem('token', authResponse.token)
+    // If the response contains a token, store it
+    if (authResponse.token) localStorage.setItem('token', authResponse.token)
+    
+    // Store user data in localStorage and context
     localStorage.setItem('user', JSON.stringify(authResponse))
     setUser(authResponse)
+  }
+
+  const updateUser = (userData) => {
+    // Get existing token and merge with new data
+    const token = localStorage.getItem('token')
+    const updated = { ...userData, token }
+    localStorage.setItem('user', JSON.stringify(updated))
+    setUser(updated)
   }
 
   const logout = () => {

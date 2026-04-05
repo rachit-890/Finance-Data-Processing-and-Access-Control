@@ -5,7 +5,7 @@ import { userAPI } from '../api/services'
 import { User, Lock, Shield, Activity, Calendar } from 'lucide-react'
 
 export default function ProfilePage() {
-  const { user, login } = useAuth()
+  const { user, updateUser } = useAuth()
   const toast = useToast()
 
   const [nameForm, setNameForm] = useState({ name: user?.name || '' })
@@ -19,11 +19,8 @@ export default function ProfilePage() {
     setSavingName(true)
     try {
       const { data } = await userAPI.updateProfile({ name: nameForm.name })
-      // Update stored user object
-      const stored = JSON.parse(localStorage.getItem('user') || '{}')
-      const updated = { ...stored, name: data.name }
-      localStorage.setItem('user', JSON.stringify(updated))
-      login(updated)
+      // Use the new updateUser helper to sync name without breaking token
+      updateUser(data)
       toast.success('Display name updated!')
     } catch (err) {
       toast.error(err.response?.data?.message || 'Failed to update name')

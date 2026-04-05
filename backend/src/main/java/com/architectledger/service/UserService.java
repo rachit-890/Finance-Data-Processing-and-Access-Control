@@ -64,7 +64,8 @@ public class UserService {
             user.setName(newName.trim());
         }
         if (newPassword != null && !newPassword.isBlank()) {
-            if (currentPassword == null || !passwordEncoder.matches(currentPassword, user.getPassword())) {
+            if (currentPassword == null || currentPassword.isBlank() || !passwordEncoder.matches(currentPassword, user.getPassword())) {
+                System.out.println("Password mismatch for user: " + email);
                 throw new BadRequestException("Current password is incorrect");
             }
             if (newPassword.length() < 6) {
