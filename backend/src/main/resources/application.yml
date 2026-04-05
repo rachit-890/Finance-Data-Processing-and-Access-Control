@@ -1,0 +1,56 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: architect-ledger
+
+  # ── H2 In-Memory (Development — no MySQL needed) ──────────────────────────
+  datasource:
+    url: jdbc:h2:mem:architectledger;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE;MODE=MySQL
+    username: sa
+    password:
+    driver-class-name: org.h2.Driver
+
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+
+  # ── MySQL (Production — uncomment & comment out H2 block above) ────────────
+  # datasource:
+  #   url: jdbc:mysql://localhost:3306/architect_ledger?createDatabaseIfNotExist=true&useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true
+  #   username: root
+  #   password: root
+  #   driver-class-name: com.mysql.cj.jdbc.Driver
+  #   hikari:
+  #     connection-timeout: 20000
+  #     maximum-pool-size: 10
+
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    show-sql: false
+    properties:
+      hibernate:
+        format_sql: true
+        dialect: org.hibernate.dialect.H2Dialect
+    open-in-view: false
+
+  jackson:
+    serialization:
+      write-dates-as-timestamps: false
+    time-zone: UTC
+
+app:
+  jwt:
+    secret: "NGI3ZTJhOWYzYzhkMWU2YjVhMGY5YzJkN2U0YjFhOGYzYzZlOWQyYjVhN2YwYzNlNmQ5YjJhNWY4YzFlNGQ3"
+    expiration-ms: 86400000
+
+  cors:
+    allowed-origins: "http://localhost:5173,http://localhost:3000"
+
+logging:
+  level:
+    com.architectledger: INFO
+    org.springframework.security: WARN

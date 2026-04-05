@@ -1,0 +1,141 @@
+.sidebar {
+  width: var(--sidebar-w);
+  height: 100vh;
+  background: var(--bg-surface);
+  border-right: 1px solid var(--border-subtle);
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  left: 0; top: 0;
+  z-index: 100;
+}
+
+/* ── Brand ── */
+.sidebar-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 20px 16px 16px;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.brand-icon {
+  width: 36px; height: 36px;
+  background: var(--primary);
+  border-radius: 8px;
+  display: flex; align-items: center; justify-content: center;
+  color: var(--txt-inverse);
+  box-shadow: 0 4px 12px var(--primary-glow);
+  flex-shrink: 0;
+}
+
+.brand-name { font-size: 14px; font-weight: 800; color: var(--txt-primary); line-height: 1.2; }
+.brand-sub  { font-size: 9px; font-weight: 700; color: var(--primary); margin-top: 2px;
+              letter-spacing: 0.14em; text-transform: uppercase; }
+
+/* ── Vault label (like "The Obsidian Vault") ── */
+.sidebar-vault {
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--border-subtle);
+}
+.vault-name { font-size: 11px; font-weight: 800; color: var(--primary); }
+.vault-sub  { font-size: 9px;  font-weight: 600; color: var(--txt-muted); text-transform: uppercase; letter-spacing: 0.1em; margin-top: 1px; }
+
+/* ── Nav ── */
+.sidebar-nav {
+  flex: 1;
+  padding: 12px 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  overflow-y: auto;
+}
+
+.nav-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  border-radius: var(--r-sm);
+  color: var(--txt-secondary);
+  font-size: 13px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.18s ease;
+  position: relative;
+}
+
+.nav-item:hover {
+  background: var(--bg-elevated);
+  color: var(--txt-primary);
+}
+
+.nav-item.active {
+  background: var(--primary-muted);
+  color: var(--primary);
+}
+
+/* Green left indicator bar on active item */
+.nav-item.active::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 25%; bottom: 25%;
+  width: 3px;
+  background: var(--primary);
+  border-radius: 0 3px 3px 0;
+  box-shadow: 0 0 8px var(--primary-glow);
+}
+
+/* ── New Transaction fab-style button ── */
+.sidebar-cta {
+  margin: 0 12px 12px;
+}
+.sidebar-cta-btn {
+  width: 100%;
+  display: flex; align-items: center; justify-content: center; gap: 8px;
+  padding: 12px;
+  background: var(--primary);
+  color: var(--txt-inverse);
+  border: none; border-radius: var(--r-sm);
+  font-family: var(--font); font-size: 13px; font-weight: 800;
+  cursor: pointer;
+  box-shadow: 0 4px 20px var(--primary-glow);
+  transition: all 0.18s ease;
+  letter-spacing: 0.01em;
+}
+.sidebar-cta-btn:hover {
+  background: var(--primary-dim);
+  box-shadow: 0 6px 28px var(--primary-glow);
+  transform: translateY(-1px);
+}
+
+/* ── Footer ── */
+.sidebar-footer {
+  padding: 12px;
+  border-top: 1px solid var(--border-subtle);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.user-info { display: flex; align-items: center; gap: 9px; flex: 1; min-width: 0; }
+
+.user-avatar {
+  width: 32px; height: 32px; border-radius: 50%;
+  background: linear-gradient(135deg, var(--primary), #2ea860);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 13px; font-weight: 800; color: var(--txt-inverse); flex-shrink: 0;
+}
+
+.user-meta { min-width: 0; }
+.user-name { font-size: 12px; font-weight: 700; color: var(--txt-primary);
+             overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.user-role { font-size: 10px; color: var(--txt-muted); text-transform: uppercase;
+             letter-spacing: 0.07em; font-weight: 700; margin-top: 1px; }
+
+.logout-btn {
+  background: none; border: none; cursor: pointer;
+  color: var(--txt-muted); padding: 6px; border-radius: var(--r-xs);
+  display: flex; align-items: center; transition: all 0.18s; flex-shrink: 0;
+}
+.logout-btn:hover { color: var(--secondary); background: var(--secondary-muted); }

@@ -1,0 +1,117 @@
+/* ══ Auth Page — matches "Secure Entry Vault" reference ══ */
+
+.auth-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg-base);
+  padding: 24px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Subtle background text — like "THE OBSIDIAN VAULT" */
+.auth-page::before {
+  content: 'ARCHITECT LEDGER';
+  position: absolute;
+  left: -20px;
+  top: 50%;
+  transform: translateY(-50%) rotate(-90deg);
+  font-size: 72px;
+  font-weight: 900;
+  color: rgba(255,255,255,0.02);
+  letter-spacing: 0.18em;
+  pointer-events: none;
+  white-space: nowrap;
+  transform-origin: center;
+}
+
+.auth-glow {
+  position: absolute;
+  width: 500px; height: 500px;
+  background: radial-gradient(circle, rgba(80,200,120,0.08) 0%, transparent 70%);
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+
+.auth-card {
+  width: 100%;
+  max-width: 400px;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--r-xl);
+  padding: 36px;
+  box-shadow: 0 24px 64px rgba(0,0,0,0.6);
+}
+
+/* Icon + title at top center */
+.auth-brand {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 28px;
+}
+
+.auth-brand-icon {
+  width: 52px; height: 52px;
+  background: var(--primary-muted);
+  border: 1px solid rgba(80,200,120,0.35);
+  border-radius: 14px;
+  display: flex; align-items: center; justify-content: center;
+  color: var(--primary);
+  box-shadow: 0 8px 24px var(--primary-glow);
+}
+
+.auth-title {
+  font-size: 18px; font-weight: 800;
+  text-align: center; color: var(--txt-primary);
+}
+.auth-sub {
+  font-size: 10px; color: var(--txt-muted);
+  text-transform: uppercase; letter-spacing: 0.14em;
+  text-align: center; font-weight: 700;
+}
+
+.auth-heading { font-size: 13px; font-weight: 700; color: var(--txt-muted); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 16px; }
+.auth-desc    { font-size: 13px; color: var(--txt-secondary); margin-bottom: 20px; }
+
+/* Security badge footer */
+.auth-security {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 20px;
+}
+.auth-security-item {
+  display: flex; align-items: center; gap: 5px;
+  font-size: 10px; font-weight: 700; color: var(--txt-muted);
+  text-transform: uppercase; letter-spacing: 0.08em;
+}
+
+.auth-switch {
+  text-align: center;
+  margin-top: 18px;
+  font-size: 13px;
+  color: var(--txt-muted);
+}
+.auth-switch a { color: var(--primary); font-weight: 700; text-decoration: none; }
+.auth-switch a:hover { text-decoration: underline; }
+
+.pwd-toggle {
+  position: absolute; right: 12px; top: 50%; transform: translateY(-50%);
+  background: none; border: none; cursor: pointer; color: var(--txt-muted);
+  display: flex; align-items: center; transition: color 0.18s;
+}
+.pwd-toggle:hover { color: var(--primary); }
+
+/* Input icon prefix */
+.input-icon-wrap { position: relative; }
+.input-icon {
+  position: absolute; left: 12px; top: 50%; transform: translateY(-50%);
+  color: var(--txt-muted);
+}
+.input-icon-wrap .form-input { padding-left: 36px; }

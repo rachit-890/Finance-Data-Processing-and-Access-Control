@@ -1,0 +1,8 @@
+API_DOCUMENTATION.md
+Architect_Ledger_Documentation.md
+
+# Also ignore common build/dependency directories just in case they aren't ignored in subfolders
+backend/target/
+frontend/node_modules/
+frontend/dist/
+.DS_Store

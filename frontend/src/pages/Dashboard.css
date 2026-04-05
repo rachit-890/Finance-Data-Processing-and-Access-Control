@@ -1,0 +1,105 @@
+.dashboard { max-width: 1100px; }
+
+/* ── Header ── */
+.dash-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 24px;
+}
+.dash-eyebrow {
+  font-size: 11px; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 0.12em; color: var(--txt-muted); margin-bottom: 4px;
+}
+.dash-title {
+  font-size: 28px; font-weight: 800; color: var(--txt-primary);
+}
+.dash-period {
+  font-size: 12px; font-weight: 700; color: var(--txt-secondary);
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--r-sm);
+  padding: 7px 14px;
+  white-space: nowrap;
+  align-self: flex-start;
+  margin-top: 6px;
+}
+
+/* ── KPI Row — 3 columns like reference ── */
+.kpi-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.kpi-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--r-lg);
+  padding: 20px 22px;
+  box-shadow: var(--shadow-card);
+  transition: border-color 0.2s;
+}
+.kpi-card:hover { border-color: var(--border); }
+
+/* Left green border on highlighted card */
+.kpi-card--highlight {
+  border-left: 3px solid var(--primary);
+  box-shadow: inset 4px 0 20px rgba(80,200,120,0.04), var(--shadow-card);
+}
+
+.kpi-label { font-size: 11px; font-weight: 700; text-transform: uppercase;
+             letter-spacing: 0.1em; color: var(--txt-muted); margin-bottom: 10px; }
+
+.kpi-value {
+  font-size: 30px; font-weight: 800; line-height: 1;
+  letter-spacing: -0.01em; margin-bottom: 10px;
+}
+.kpi-value--income  { color: var(--primary); }
+.kpi-value--expense { color: var(--secondary); }
+
+.kpi-trend { display: flex; align-items: center; gap: 5px; font-size: 12px; font-weight: 700; }
+.kpi-trend span { color: var(--txt-muted); font-weight: 500; }
+.kpi-trend--up   { color: var(--primary); }
+.kpi-trend--down { color: var(--secondary); }
+
+/* ── Charts Row ── */
+.charts-row {
+  display: grid;
+  grid-template-columns: 1fr 280px;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.chart-main { padding: 22px; }
+.chart-side { padding: 22px; }
+
+.chart-header {
+  display: flex; align-items: center; justify-content: space-between;
+  margin-bottom: 18px;
+}
+
+.chart-title { font-size: 15px; font-weight: 800; color: var(--txt-primary); }
+
+.chart-legend-item {
+  display: flex; align-items: center; gap: 6px;
+  font-size: 11px; font-weight: 700; color: var(--txt-muted);
+}
+.legend-dot {
+  width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0;
+}
+
+/* ── Donut legend ── */
+.pie-legend { display: flex; flex-direction: column; gap: 8px; margin-top: 12px; }
+.pie-legend-item {
+  display: flex; align-items: center; gap: 8px;
+  font-size: 12px;
+}
+.pie-cat { flex: 1; color: var(--txt-secondary); font-weight: 600; }
+.pie-pct { font-weight: 800; color: var(--txt-primary); min-width: 32px; text-align: right; }
+
+@media (max-width: 900px) {
+  .charts-row { grid-template-columns: 1fr; }
+  .kpi-row    { grid-template-columns: 1fr; }
+}
