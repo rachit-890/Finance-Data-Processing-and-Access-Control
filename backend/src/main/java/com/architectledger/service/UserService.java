@@ -60,19 +60,23 @@ public class UserService {
     @Transactional
     public UserResponse updateProfile(String email, String newName, String currentPassword, String newPassword) {
         User user = findByEmail(email);
-        if (newName != null && !newName.isBlank()) {
+
+        // Update name ONLY if provided and not blank
+        if (newName != null && !newName.trim().isEmpty()) {
             user.setName(newName.trim());
         }
-        if (newPassword != null && !newPassword.isBlank()) {
-            if (currentPassword == null || currentPassword.isBlank() || !passwordEncoder.matches(currentPassword, user.getPassword())) {
-                System.out.println("Password mismatch for user: " + email);
-                throw new BadRequestException("Current password is incorrect");
+
+        // Update password ONLY if new password is provided
+        if (newPassword != null && !newPassword.trim().isEmpty()) {
+            if (currentPassword == null || currentPassword.isEmpty() || !passwordEncoder.matches(currentPassword, user.getPassword())) {
+                throw new BadRequestException("Current password verification failed.");
             }
-            if (newPassword.length() < 6) {
-                throw new BadRequestException("New password must be at least 6 characters");
+            if (newPassword.trim().length() < 6) {
+                throw new BadRequestException("New password must be at least 6 characters.");
             }
-            user.setPassword(passwordEncoder.encode(newPassword));
+            user.setPassword(passwordEncoder.encode(newPassword.trim()));
         }
+
         return toResponse(userRepository.save(user));
     }
 
