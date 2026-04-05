@@ -7,8 +7,20 @@
   flex-direction: column;
   position: fixed;
   left: 0; top: 0;
-  z-index: 100;
+  z-index: 1000;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
+
+@media screen and (max-width: 992px) {
+  .sidebar {
+    width: 260px;
+    transform: translateX(-100%);
+  }
+  .sidebar.open {
+    transform: translateX(0);
+  }
+}
+
 
 /* ── Brand ── */
 .sidebar-brand {
@@ -32,6 +44,22 @@
 .brand-name { font-size: 14px; font-weight: 800; color: var(--txt-primary); line-height: 1.2; }
 .brand-sub  { font-size: 9px; font-weight: 700; color: var(--primary); margin-top: 2px;
               letter-spacing: 0.14em; text-transform: uppercase; }
+
+.sidebar-close-btn {
+  display: none;
+  background: none;
+  border: none;
+  color: var(--txt-muted);
+  cursor: pointer;
+  padding: 4px;
+}
+
+@media screen and (max-width: 992px) {
+  .sidebar-close-btn {
+    display: block;
+  }
+}
+
 
 /* ── Vault label (like "The Obsidian Vault") ── */
 .sidebar-vault {

@@ -115,3 +115,15 @@
   color: var(--txt-muted);
 }
 .input-icon-wrap .form-input { padding-left: 36px; }
+
+/* Mobile optimization */
+@media screen and (max-width: 480px) {
+  .auth-page { padding: 16px; }
+  .auth-card { padding: 24px; }
+  .auth-brand { margin-bottom: 20px; }
+  .auth-brand-icon { width: 44px; height: 44px; border-radius: 10px; }
+  .auth-brand-icon svg { width: 20px; height: 20px; }
+  .auth-title { font-size: 16px; }
+  .auth-sub { font-size: 9px; }
+}
+
