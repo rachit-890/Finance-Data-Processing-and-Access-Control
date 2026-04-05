@@ -42,12 +42,22 @@ public class TransactionController {
             @RequestParam(defaultValue = "20") int size,
             @RequestParam(defaultValue = "date") String sortBy,
             @RequestParam(defaultValue = "desc") String direction,
+            @RequestParam(required = false) com.architectledger.entity.Transaction.TransactionType type,
+            @RequestParam(required = false) String category,
+            @RequestParam(required = false) @org.springframework.format.annotation.DateTimeFormat(iso = org.springframework.format.annotation.DateTimeFormat.ISO.DATE) java.time.LocalDate startDate,
+            @RequestParam(required = false) @org.springframework.format.annotation.DateTimeFormat(iso = org.springframework.format.annotation.DateTimeFormat.ISO.DATE) java.time.LocalDate endDate,
             @AuthenticationPrincipal UserDetails userDetails) {
 
         PageRequest pageable = PageRequest.of(page, size,
                 direction.equalsIgnoreCase("asc") ? Sort.by(sortBy).ascending() : Sort.by(sortBy).descending());
+        
         User.Role role = getRole(userDetails);
-        return ResponseEntity.ok(transactionService.getAll(pageable, userDetails.getUsername(), role));
+        
+        if (role == User.Role.ADMIN || role == User.Role.ANALYST) {
+            return ResponseEntity.ok(transactionService.getAll(pageable, userDetails.getUsername(), role));
+        } else {
+            return ResponseEntity.ok(transactionService.getMyTransactions(userDetails.getUsername(), pageable, type, category, startDate, endDate));
+        }
     }
 
     @GetMapping("/{id}")

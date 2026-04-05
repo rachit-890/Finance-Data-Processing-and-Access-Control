@@ -71,9 +71,29 @@ public class TransactionService {
         return toPagedResponse(page);
     }
 
-    public PagedResponse<TransactionResponse> getMyTransactions(String email, Pageable pageable) {
+    public PagedResponse<TransactionResponse> getMyTransactions(String email, Pageable pageable, 
+                                                              Transaction.TransactionType type, 
+                                                              String category,
+                                                              LocalDate startDate, 
+                                                              LocalDate endDate) {
         User user = userService.findByEmail(email);
-        return toPagedResponse(transactionRepository.findByUserId(user.getId(), pageable));
+        
+        // This is a simple implementation using Spring Data Query Methods.
+        // For production, you might use Specification API for complex dynamic filtering.
+        Page<Transaction> page;
+        if (type != null && category != null) {
+            page = transactionRepository.findByUserIdAndTypeAndCategory(user.getId(), type, category, pageable);
+        } else if (type != null) {
+            page = transactionRepository.findByUserIdAndType(user.getId(), type, pageable);
+        } else if (category != null) {
+            page = transactionRepository.findByUserIdAndCategory(user.getId(), category, pageable);
+        } else if (startDate != null && endDate != null) {
+            page = transactionRepository.findByUserIdAndDateBetween(user.getId(), startDate, endDate, pageable);
+        } else {
+            page = transactionRepository.findByUserId(user.getId(), pageable);
+        }
+        
+        return toPagedResponse(page);
     }
 
     public TransactionResponse getById(Long id, String email, User.Role role) {
