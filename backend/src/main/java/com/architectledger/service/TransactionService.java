@@ -33,9 +33,10 @@ public class TransactionService {
     public TransactionResponse create(TransactionRequest request, String email) {
         User user = userService.findByEmail(email);
 
-        String refNum = request.getReferenceNumber() != null
-                ? request.getReferenceNumber()
-                : "REF-" + UUID.randomUUID().toString().substring(0, 8).toUpperCase();
+        String refReq = request.getReferenceNumber();
+        String refNum = (refReq == null || refReq.trim().isEmpty() || "Auto-generated".equalsIgnoreCase(refReq.trim()))
+                ? "REF-" + UUID.randomUUID().toString().substring(0, 8).toUpperCase()
+                : refReq;
 
         if (transactionRepository.existsByReferenceNumber(refNum)) {
             throw new BadRequestException("Reference number already exists: " + refNum);
