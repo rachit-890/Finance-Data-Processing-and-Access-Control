@@ -12,6 +12,7 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
 
+import com.architectledger.dto.request.ProfileUpdateRequest;
 import java.util.Map;
 
 @RestController
@@ -29,12 +30,12 @@ public class UserController {
     @PatchMapping("/me")
     public ResponseEntity<UserResponse> updateProfile(
             @AuthenticationPrincipal UserDetails userDetails,
-            @RequestBody Map<String, String> body) {
+            @RequestBody ProfileUpdateRequest request) {
         return ResponseEntity.ok(userService.updateProfile(
                 userDetails.getUsername(),
-                body.get("name"),
-                body.get("currentPassword"),
-                body.get("newPassword")
+                request.getName(),
+                request.getCurrentPassword(),
+                request.getNewPassword()
         ));
     }
 
