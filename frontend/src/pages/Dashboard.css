@@ -30,9 +30,9 @@
 /* ── KPI Row — 3 columns like reference ── */
 .kpi-row {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 16px;
-  margin-bottom: 20px;
+  margin-bottom: 24px;
 }
 
 .kpi-card {
@@ -102,7 +102,6 @@
 .pie-cat { flex: 1; color: var(--txt-secondary); font-weight: 600; }
 .pie-pct { font-weight: 800; color: var(--txt-primary); min-width: 32px; text-align: right; }
 
-@media (max-width: 900px) {
+@media (max-width: 1100px) {
   .charts-row { grid-template-columns: 1fr; }
-  .kpi-row    { grid-template-columns: 1fr; }
 }

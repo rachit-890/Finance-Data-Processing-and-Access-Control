@@ -90,7 +90,7 @@ export default function ProfilePage() {
         </div>
 
         {/* Info Row */}
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16, paddingTop: 20, borderTop: '1px solid var(--border-subtle)' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: 16, paddingTop: 20, borderTop: '1px solid var(--border-subtle)' }}>
           {[
             { icon: User, label: 'Full Name', val: user?.name || '—' },
             { icon: Lock, label: 'Email', val: user?.email || '—' },
@@ -166,7 +166,7 @@ export default function ProfilePage() {
         </div>
 
         <form onSubmit={handlePasswordSave}>
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: 14 }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: 14 }}>
             <div className="form-group" style={{ margin: 0 }}>
               <label className="form-label">Current Password</label>
               <input
