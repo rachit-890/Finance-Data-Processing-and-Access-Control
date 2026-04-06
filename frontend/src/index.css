@@ -8,49 +8,53 @@
 
 :root {
   /* ── Backgrounds ── */
-  --bg-base:       #0D1B2A;   /* Neutral — page base */
-  --bg-surface:    #1B263B;   /* Tertiary — sidebar, cards */
-  --bg-card:       #162031;   /* slightly lighter card */
-  --bg-elevated:   #1f2e44;   /* hover / elevated surface */
-  --bg-input:      #0f1c2d;   /* input fields */
+  --bg-base:       #020617;   /* Neutral — page base */
+  --bg-surface:    #0A1124;   /* Dark navy for cards */
+  --bg-card:       #0F172A;   /* slightly lighter card */
+  --bg-elevated:   #1E293B;   /* hover / elevated surface */
+  --bg-input:      #0F172A;   /* input fields */
 
   /* ── Brand colours ── */
-  --primary:       #50C878;   /* green */
-  --primary-dim:   #3da85f;   /* pressed green */
-  --primary-glow:  rgba(80,200,120,0.20);
-  --primary-muted: rgba(80,200,120,0.10);
+  --primary:       #10B981;   /* Midnight Emerald Primary */
+  --primary-dim:   #059669;   /* pressed */
+  --primary-glow:  rgba(16, 185, 129, 0.25);
+  --primary-muted: rgba(16, 185, 129, 0.12);
 
-  --secondary:     #E57373;   /* coral / expense */
-  --secondary-glow:rgba(229,115,115,0.18);
-  --secondary-muted:rgba(229,115,115,0.10);
+  --secondary:     #FDE68A;   /* Gold / Expense */
+  --secondary-glow:rgba(253, 230, 138, 0.18);
+  --secondary-muted:rgba(253, 230, 138, 0.10);
 
   /* ── Semantic ── */
-  --success:       #50C878;
-  --danger:        #E57373;
-  --warning:       #F5A623;
-  --info:          #5BC4F7;
+  --success:       #10B981;
+  --danger:        #FDE68A;
+  --warning:       #FDE68A;
+  --info:          #38BDF8;
+
+  /* Sidebar */
+  --sidebar-bg:    #064E3B;   /* Midnight Emerald Secondary */
 
   /* ── Border ── */
-  --border:        rgba(80,200,120,0.10);
-  --border-hover:  rgba(80,200,120,0.28);
-  --border-subtle: rgba(255,255,255,0.06);
+  --border:        rgba(16, 185, 129, 0.15);
+  --border-hover:  rgba(16, 185, 129, 0.35);
+  --border-subtle: rgba(255, 255, 255, 0.08);
 
   /* ── Text ── */
-  --txt-primary:   #E8F0E9;
-  --txt-secondary: #7A8FA6;
-  --txt-muted:     #435466;
-  --txt-inverse:   #0D1B2A;
+  --txt-primary:   #F8FAFC;
+  --txt-secondary: #94A3B8;
+  --txt-muted:     #64748B;
+  --txt-inverse:   #020617;
 
   /* ── Radius ── */
-  --r-xs: 6px; --r-sm: 8px; --r-md: 12px; --r-lg: 16px; --r-xl: 20px;
+  --r-xs: 8px; --r-sm: 12px; --r-md: 16px; --r-lg: 24px; --r-xl: 32px;
 
   /* ── Shadow ── */
-  --shadow-sm:   0 2px 8px  rgba(0,0,0,0.3);
-  --shadow-card: 0 4px 24px rgba(0,0,0,0.45);
-  --shadow-glow: 0 0 32px   rgba(80,200,120,0.12);
+  --shadow-sm:   0 4px 12px rgba(0,0,0,0.4);
+  --shadow-card: 0 8px 32px rgba(0,0,0,0.6);
+  --shadow-glow: 0 0 40px   rgba(16, 185, 129, 0.15);
 
-  --font: 'Manrope', sans-serif;
-  --sidebar-w: 220px;
+  --font: 'Inter', sans-serif;
+  --font-heading: 'Newsreader', serif;
+  --sidebar-w: 260px;
 }
 
 html, body { height: 100%; }
@@ -110,11 +114,11 @@ body {
   background: var(--bg-surface);
   border: 1px solid var(--border-subtle);
   border-radius: var(--r-lg);
-  padding: 22px;
-  box-shadow: var(--shadow-card);
-  transition: border-color 0.2s;
+  padding: 24px;
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.4s;
 }
-.card:hover { border-color: var(--border); }
+.card:hover { border-color: var(--border); box-shadow: var(--shadow-card); transform: translateY(-4px); }
 
 /* ══════════════════════════════════════
    FORMS
@@ -242,8 +246,8 @@ tr:last-child td { border-bottom: none; }
    PAGE LAYOUT HELPERS
 ══════════════════════════════════════ */
 .page-header { display: flex; align-items: flex-end; justify-content: space-between; margin-bottom: 28px; }
-.page-title  { font-size: 26px; font-weight: 800; margin-bottom: 3px; color: var(--txt-primary); }
-.page-sub    { font-size: 13px; color: var(--txt-secondary); font-weight: 500; }
+.page-title  { font-family: var(--font-heading); font-size: 38px; font-weight: 500; margin-bottom: 3px; color: var(--txt-primary); letter-spacing: -0.02em; }
+.page-sub    { font-size: 14px; color: var(--txt-secondary); font-weight: 400; }
 
 /* ══════════════════════════════════════
    UTILITIES

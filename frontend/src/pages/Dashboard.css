@@ -12,7 +12,9 @@
   letter-spacing: 0.12em; color: var(--txt-muted); margin-bottom: 4px;
 }
 .dash-title {
-  font-size: 28px; font-weight: 800; color: var(--txt-primary);
+  font-family: var(--font-heading);
+  font-size: 42px; font-weight: 500; color: var(--txt-primary);
+  letter-spacing: -0.02em;
 }
 .dash-period {
   font-size: 12px; font-weight: 700; color: var(--txt-secondary);
@@ -37,11 +39,11 @@
   background: var(--bg-surface);
   border: 1px solid var(--border-subtle);
   border-radius: var(--r-lg);
-  padding: 20px 22px;
-  box-shadow: var(--shadow-card);
-  transition: border-color 0.2s;
+  padding: 24px;
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.4s;
 }
-.kpi-card:hover { border-color: var(--border); }
+.kpi-card:hover { border-color: var(--border); box-shadow: var(--shadow-card); transform: translateY(-4px); }
 
 /* Left green border on highlighted card */
 .kpi-card--highlight {
@@ -53,8 +55,9 @@
              letter-spacing: 0.1em; color: var(--txt-muted); margin-bottom: 10px; }
 
 .kpi-value {
-  font-size: 30px; font-weight: 800; line-height: 1;
-  letter-spacing: -0.01em; margin-bottom: 10px;
+  font-family: var(--font-heading);
+  font-size: 44px; font-weight: 500; line-height: 1;
+  letter-spacing: -0.03em; margin-bottom: 12px;
 }
 .kpi-value--income  { color: var(--primary); }
 .kpi-value--expense { color: var(--secondary); }
