@@ -1,6 +1,6 @@
 # Architect Ledger - Enterprise Finance Dashboard
 
-A scalable, full-stack financial dashboard designed to gracefully track, manage, and visualize corporate income, expenses, and transaction logs. This application consists of a robust Spring Boot backend paired with a reactive, modern React frontend.
+A  scalable, full-stack financial dashboard designed to gracefully track, manage, and visualize corporate income, expenses, and transaction logs. This application consists of a robust Spring Boot backend paired with a reactive, modern React frontend.
 
 ![Architect Ledger](https://via.placeholder.com/1000x500?text=Architect+Ledger+Dashboard)
 
